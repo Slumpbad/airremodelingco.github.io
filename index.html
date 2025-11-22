@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIR Remodeling – Quality Home Renovations</title>
+  <style>
+    :root {
+      --primary: #1f3b5b;
+      --primary-light: #305a85;
+      --accent: #f6a800;
+      --bg: #f5f5f7;
+      --text: #1b1b1f;
+      --muted: #6b7280;
+      --white: #ffffff;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.08);
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrapper {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(245, 245, 247, 0.9);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+
+    .logo-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .lang-toggle {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 0.18rem;
+      display: flex;
+      background: var(--white);
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      padding: 0.25rem 0.65rem;
+      font-size: 0.75rem;
+      border-radius: 999px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .lang-btn.active {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .nav-call {
+      display: none;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      padding: 0.7rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 2.5rem 0 2.5rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-tag {
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(31, 59, 91, 0.06);
+      color: var(--primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-heading {
+      margin-top: 1rem;
+      font-size: clamp(2.1rem, 3vw + 1rem, 3.1rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-heading span {
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      margin-top: 0.75rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 32rem;
+    }
+
+    .hero-sub span {
+      display: block;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-meta {
+      margin-top: 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-meta span::before {
+      content: "•";
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #ffffff, #e5edf7);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-card-title {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.09);
+      color: #166534;
+      font-weight: 600;
+    }
+
+    .estimate-points {
+      display: grid;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .estimate-points span::before {
+      content: "✓";
+      margin-right: 0.45rem;
+      color: #15803d;
+      font-weight: 700;
+    }
+
+    .hero-stat-row {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .hero-stat {
+      flex: 1;
+      padding: 0.7rem 0.8rem;
+      border-radius: 0.9rem;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .hero-stat-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .hero-stat-value {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    /* Sections */
+    section {
+      padding: 2.5rem 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+      max-width: 420px;
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1rem;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.07);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .service-icon {
+      font-size: 1.35rem;
+    }
+
+    .service-title {
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .service-text {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.35rem;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.18rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(31, 59, 91, 0.06);
+      color: var(--primary);
+    }
+
+    /* Process & Why */
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 1.6rem;
+      align-items: flex-start;
+    }
+
+    .pill-list {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+    }
+
+    .pill-item {
+      background: var(--white);
+      border-radius: 999px;
+      padding: 0.6rem 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .pill-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      background: rgba(15, 23, 42, 0.05);
+    }
+
+    .pill-main {
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .pill-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+
+    .project-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-photo {
+      min-height: 140px;
+      background: repeating-linear-gradient(
+        45deg,
+        #e5e7eb,
+        #e5e7eb 8px,
+        #f3f4f6 8px,
+        #f3f4f6 16px
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
+
+    .project-body {
+      padding: 0.8rem 0.9rem 0.95rem;
+      display: grid;
+      gap: 0.3rem;
+    }
+
+    .project-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .project-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 1.6rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 1.4rem 1.3rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.2rem;
+      margin-bottom: 0.65rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    input,
+    select,
+    textarea {
+      border-radius: 0.65rem;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 0.6rem 0.7rem;
+      font-size: 0.85rem;
+      font-family: inherit;
+      outline: none;
+      background: #f9fafb;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      background: #ffffff;
+      box-shadow: 0 0 0 1px rgba(31, 59, 91, 0.08);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    .contact-info {
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+    }
+
+    .contact-info strong {
+      font-size: 0.9rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .contact-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: rgba(31, 59, 91, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 1.3rem 0 1.5rem;
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-links a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner,
+      .services-grid,
+      .projects-grid,
+      .contact-grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 1.6rem;
+      }
+
+      .hero-inner {
+        gap: 1.8rem;
+      }
+
+      .services-grid {
+        gap: 0.9rem;
+      }
+
+      .projects-grid {
+        gap: 0.9rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-call {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrapper {
+        padding: 0 1rem;
+      }
+
+      header {
+        border-radius: 0 0 1.2rem 1.2rem;
+      }
+
+      .hero-card {
+        padding: 1.2rem;
+      }
+
+      .service-card {
+        padding: 0.95rem 0.9rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Header / Nav -->
+    <header>
+      <div class="wrapper">
+        <nav class="nav">
+          <div class="logo">
+            <div class="logo-mark">AR</div>
+            <div class="logo-text">
+              <div class="logo-title">AIR Remodeling</div>
+              <div class="logo-sub" data-text data-en="Residential & Commercial Upgrades" data-es="Mejoras residenciales y comerciales">
+                Residential &amp; Commercial Upgrades
+              </div>
+            </div>
+          </div>
+
+          <div class="nav-links">
+            <a href="#services" data-text data-en="Services" data-es="Servicios">Services</a>
+            <a href="#projects" data-text data-en="Projects" data-es="Proyectos">Projects</a>
+            <a href="#process" data-text data-en="Our Process" data-es="Nuestro Proceso">Our Process</a>
+            <a href="#contact" data-text data-en="Contact" data-es="Contacto">Contact</a>
+          </div>
+
+          <div class="nav-actions">
+            <div class="lang-toggle">
+              <button class="lang-btn active" data-lang-btn="en">EN</button>
+              <button class="lang-btn" data-lang-btn="es">ES</button>
+            </div>
+            <!-- Updated phone here -->
+            <a href="tel:19432685209" class="btn btn-outline nav-call" data-text data-en="Call Now" data-es="Llamar Ahora">
+              Call Now
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="top">
+        <div class="wrapper">
+          <div class="hero-inner">
+            <div>
+              <div class="hero-tag" data-text data-en="Licensed • Insured • Local"
+                data-es="Licenciados • Asegurados • Locales">
+                Licensed • Insured • Local
+              </div>
+
+              <h1 class="hero-heading">
+                <span data-text data-en="Remodeling made simple." data-es="Remodelar nunca fue tan fácil.">
+                  Remodeling made simple.
+                </span>
+                <br />
+                <span data-text data-en="We turn your house into your favorite place."
+                  data-es="Convertimos tu casa en tu lugar favorito.">
+                  We turn your house into your favorite place.
+                </span>
+              </h1>
+
+              <p class="hero-sub">
+                <span data-text
+                  data-en="From flooring and paint to full interior renovations, AIR Remodeling delivers clean, detailed, code-compliant work."
+                  data-es="Desde pisos y pintura hasta renovaciones interiores completas, AIR Remodeling entrega trabajos limpios, detallados y conforme al código.">
+                  From flooring and paint to full interior renovations, AIR Remodeling delivers clean, detailed,
+                  code-compliant work.
+                </span>
+              </p>
+
+              <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary" data-text data-en="Request a Free Estimate"
+                  data-es="Solicitar estimado gratis">
+                  Request a Free Estimate
+                </a>
+                <!-- Updated phone button text + link -->
+                <a href="tel:19432685209" class="btn btn-outline" data-text
+                  data-en="Call or Text: (943) 268-5209" data-es="Llamar o texto: (943) 268-5209">
+                  Call or Text: (943) 268-5209
+                </a>
+              </div>
+
+              <div class="hero-meta">
+                <span data-text data-en="Serving Lilburn, Gwinnett County & surrounding areas"
+                  data-es="Servicio en Lilburn, el condado de Gwinnett y alrededores">
+                  Serving Lilburn, Gwinnett County &amp; surrounding areas
+                </span>
+                <span data-text data-en="Interior • Exterior • Repairs • Full Renovations"
+                  data-es="Interior • Exterior • Reparaciones • Renovaciones completas">
+                  Interior • Exterior • Repairs • Full Renovations
+                </span>
+              </div>
+            </div>
+
+            <aside class="hero-card">
+              <div class="hero-card-header">
+                <div class="hero-card-title" data-text data-en="Free in-home estimate" data-es="Estimado gratis en casa">
+                  Free in-home estimate
+                </div>
+                <span class="badge" data-text data-en="No obligation" data-es="Sin compromiso">No obligation</span>
+              </div>
+
+              <div class="estimate-points">
+                <span data-text data-en="Walk-through of your project and scope of work"
+                  data-es="Recorrido de su proyecto y alcance del trabajo">
+                  Walk-through of your project and scope of work
+                </span>
+                <span data-text data-en="Detailed written quote for labor and materials"
+                  data-es="Cotización detallada por mano de obra y materiales">
+                  Detailed written quote for labor and materials
+                </span>
+                <span data-text data-en="English & Spanish communication available"
+                  data-es="Comunicación disponible en inglés y español">
+                  English &amp; Spanish communication available
+                </span>
+              </div>
+
+              <div class="hero-stat-row">
+                <div class="hero-stat">
+                  <div class="hero-stat-label" data-text data-en="Average response time"
+                    data-es="Tiempo promedio de respuesta">
+                    Average response time
+                  </div>
+                  <div class="hero-stat-value" data-text data-en="Same day for most requests"
+                    data-es="Mismo día para la mayoría de solicitudes">
+                    Same day for most requests
+                  </div>
+                </div>
+                <div class="hero-stat">
+                  <div class="hero-stat-label" data-text data-en="Project types" data-es="Tipos de proyectos">
+                    Project types
+                  </div>
+                  <div class="hero-stat-value" data-text
+                    data-en="Paint • Floors • Bathrooms • Kitchens • Repairs"
+                    data-es="Pintura • Pisos • Baños • Cocinas • Reparaciones">
+                    Paint • Floors • Bathrooms • Kitchens • Repairs
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services">
+        <div class="wrapper">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title" data-text data-en="Remodeling services we offer"
+                data-es="Servicios de remodelación que ofrecemos">
+                Remodeling services we offer
+              </h2>
+              <p class="section-sub" data-text
+                data-en="Choose a single repair or a full renovation. We handle the details so your project finishes clean, on time, and within budget."
+                data-es="Desde una reparación sencilla hasta una renovación completa. Nos encargamos de los detalles para que su proyecto termine limpio, a tiempo y dentro del presupuesto.">
+                Choose a single repair or a full renovation. We handle the details so your project finishes clean, on
+                time, and within budget.
+              </p>
+            </div>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="service-icon">🎨</div>
+              <h3 class="service-title" data-text data-en="Interior & Exterior Painting"
+                data-es="Pintura interior y exterior">
+                Interior &amp; Exterior Painting
+              </h3>
+              <p class="service-text" data-text
+                data-en="Whole-house repaints, trim and doors, ceilings, accent walls, and drywall repairs."
+                data-es="Pintura de toda la casa, marcos y puertas, techos, paredes de acento y reparaciones de drywall.">
+                Whole-house repaints, trim and doors, ceilings, accent walls, and drywall repairs.
+              </p>
+              <div class="service-tags">
+                <span class="tag">Drywall • Ceilings</span>
+                <span class="tag">Patch &amp; Repair</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon">🪵</div>
+              <h3 class="service-title" data-text data-en="Flooring & Stairs"
+                data-es="Pisos e instalaciones de escaleras">
+                Flooring &amp; Stairs
+              </h3>
+              <p class="service-text" data-text
+                data-en="Vinyl plank, laminate, hardwood, carpet removal, transitions, and stair treads."
+                data-es="Piso vinílico, laminado, madera, retiro de alfombra, transiciones y escalones.">
+                Vinyl plank, laminate, hardwood, carpet removal, transitions, and stair treads.
+              </p>
+              <div class="service-tags">
+                <span class="tag">Waterproof vinyl</span>
+                <span class="tag">Carpet removal</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon">🛁</div>
+              <h3 class="service-title" data-text data-en="Bathrooms & Showers"
+                data-es="Baños y regaderas">
+                Bathrooms &amp; Showers
+              </h3>
+              <p class="service-text" data-text
+                data-en="Tile, shower valve replacement, vanities, toilet replacement, caulking, and repairs."
+                data-es="Azulejo, reemplazo de válvula de regadera, gabinetes, cambio de inodoro, sellado y reparaciones.">
+                Tile, shower valve replacement, vanities, toilet replacement, caulking, and repairs.
+              </p>
+              <div class="service-tags">
+                <span class="tag">Toilets &amp; valves</span>
+                <span class="tag">Tile &amp; grout</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon">🍽️</div>
+              <h3 class="service-title" data-text data-en="Kitchen Updates"
+                data-es="Actualizaciones de cocina">
+                Kitchen Updates
+              </h3>
+              <p class="service-text" data-text
+                data-en="Backsplash, cabinet painting, hardware, lighting changes, and minor layout adjustments."
+                data-es="Backsplash, pintura de gabinetes, manijas, cambios de iluminación y ajustes menores.">
+                Backsplash, cabinet painting, hardware, lighting changes, and minor layout adjustments.
+              </p>
+              <div class="service-tags">
+                <span class="tag">Cabinet refinishing</span>
+                <span class="tag">Backsplash</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon">💡</div>
+              <h3 class="service-title" data-text data-en="Electrical Fixtures & Lighting"
+                data-es="Lámparas y accesorios eléctricos">
+                Electrical Fixtures &amp; Lighting
+              </h3>
+              <p class="service-text" data-text
+                data-en="Light fixtures, fans, outlets not working, switches, and basic wiring corrections."
+                data-es="Lámparas, abanicos, tomacorrientes que no funcionan, apagadores y correcciones básicas de cableado.">
+                Light fixtures, fans, outlets not working, switches, and basic wiring corrections.
+              </p>
+              <div class="service-tags">
+                <span class="tag">Ceiling fans</span>
+                <span class="tag">Outlets &amp; switches</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon">🧰</div>
+              <h3 class="service-title" data-text data-en="Repairs & Punch Lists"
+                data-es="Reparaciones y pendientes">
+                Repairs &amp; Punch Lists
+              </h3>
+              <p class="service-text" data-text
+                data-en="Spackled holes, damaged ceilings, trim, doors, window wood and glass, and inspection lists."
+                data-es="Huesos empastados, techos dañados, molduras, puertas, marcos y vidrio de ventanas y listas de inspección.">
+                Spackled holes, damaged ceilings, trim, doors, window wood and glass, and inspection lists.
+              </p>
+              <div class="service-tags">
+                <span class="tag">Move-in / Move-out</span>
+                <span class="tag">Make-ready</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why & Process -->
+      <section id="process">
+        <div class="wrapper">
+          <div class="two-col">
+            <div>
+              <h2 class="section-title" data-text data-en="Why homeowners choose AIR Remodeling"
+                data-es="Por qué los dueños de casa eligen AIR Remodeling">
+                Why homeowners choose AIR Remodeling
+              </h2>
+              <p class="section-sub" style="margin-top: 0.4rem" data-text
+                data-en="We treat your home like our own—protecting floors, cleaning up daily, and keeping you updated at every step."
+                data-es="Tratamos su casa como si fuera nuestra: protegemos pisos, limpiamos a diario y lo mantenemos informado en cada paso.">
+                We treat your home like our own—protecting floors, cleaning up daily, and keeping you updated at every
+                step.
+              </p>
+
+              <ul class="pill-list" style="margin-top: 0.9rem">
+                <li class="pill-item">
+                  <div class="pill-badge">✔️</div>
+                  <div>
+                    <div class="pill-main" data-text data-en="Clear written estimates"
+                      data-es="Estimados claros por escrito">
+                      Clear written estimates
+                    </div>
+                    <div class="pill-sub" data-text
+                      data-en="Labor and materials broken down so you know exactly what you’re paying for."
+                      data-es="Desglose de mano de obra y materiales para que sepa exactamente qué está pagando.">
+                      Labor and materials broken down so you know exactly what you’re paying for.
+                    </div>
+                  </div>
+                </li>
+                <li class="pill-item">
+                  <div class="pill-badge">🧹</div>
+                  <div>
+                    <div class="pill-main" data-text data-en="Clean, respectful job sites"
+                      data-es="Áreas de trabajo limpias y respetuosas">
+                      Clean, respectful job sites
+                    </div>
+                    <div class="pill-sub" data-text
+                      data-en="We protect surfaces, minimize dust, and haul off debris when finished."
+                      data-es="Protegemos superficies, minimizamos el polvo y retiramos escombros al terminar.">
+                      We protect surfaces, minimize dust, and haul off debris when finished.
+                    </div>
+                  </div>
+                </li>
+                <li class="pill-item">
+                  <div class="pill-badge">📅</div>
+                  <div>
+                    <div class="pill-main" data-text data-en="Flexible scheduling"
+                      data-es="Horarios flexibles">
+                      Flexible scheduling
+                    </div>
+                    <div class="pill-sub" data-text
+                      data-en="We work around your schedule and keep you updated on start and finish dates."
+                      data-es="Trabajamos alrededor de su horario y le avisamos de fechas de inicio y entrega.">
+                      We work around your schedule and keep you updated on start and finish dates.
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="section-title" style="font-size: 1.2rem" data-text
+                data-en="How our process works"
+                data-es="Cómo funciona nuestro proceso">
+                How our process works
+              </h3>
+              <ul class="pill-list" style="margin-top: 0.9rem">
+                <li class="pill-item">
+                  <div class="pill-badge">1</div>
+                  <div>
+                    <div class="pill-main" data-text data-en="Quick call or message"
+                      data-es="Llamada o mensaje rápido">
+                      Quick call or message
+                    </div>
+                    <div class="pill-sub" data-text
+                      data-en="Share photos or a brief description of your project."
+                      data-es="Envíe fotos o una breve descripción de su proyecto.">
+                      Share photos or a brief description of your project.
+                    </div>
+                  </div>
+                </li>
+                <li class="pill-item">
+                  <div class="pill-badge">2</div>
+                  <div>
+                    <div class="pill-main" data-text data-en="In-person walk-through"
+                      data-es="Visita y revisión en persona">
+                      In-person walk-through
+                    </div>
+                    <div class="pill-sub" data-text
+                      data-en="We inspect floors, walls, ceilings, plumbing, or electrical as needed."
+                      data-es="Revisamos pisos, paredes, techos, plomería o electricidad según se necesite.">
+                      We inspect floors, walls, ceilings, plumbing, or electrical as needed.
+                    </div>
+                  </div>
+                </li>
+                <li class="pill-item">
+                  <div class="pill-badge">3</div>
+                  <div>
+                    <div class="pill-main" data-text data-en="Written estimate"
+                      data-es="Estimado por escrito">
+                      Written estimate
+                    </div>
+                    <div class="pill-sub" data-text
+                      data-en="You receive a clear, itemized quote with options if requested."
+                      data-es="Usted recibe una cotización clara y detallada con opciones si lo desea.">
+                      You receive a clear, itemized quote with options if requested.
+                    </div>
+                  </div>
+                </li>
+                <li class="pill-item">
+                  <div class="pill-badge">4</div>
+                  <div>
+                    <div class="pill-main" data-text data-en="Project day" data-es="Día del proyecto">
+                      Project day
+                    </div>
+                    <div class="pill-sub" data-text
+                      data-en="We show up on time, complete the work, and walk the project with you."
+                      data-es="Llegamos a tiempo, completamos el trabajo y revisamos el proyecto con usted.">
+                      We show up on time, complete the work, and walk the project with you.
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects">
+        <div class="wrapper">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title" data-text data-en="Recent projects & before/after work"
+                data-es="Proyectos recientes y trabajos antes/después">
+                Recent projects &amp; before/after work
+              </h2>
+              <p class="section-sub" data-text
+                data-en="Replace these placeholders with your own photos of floors, bathrooms, and full interiors."
+                data-es="Reemplace estos cuadros con sus propias fotos de pisos, baños e interiores completos.">
+                Replace these placeholders with your own photos of floors, bathrooms, and full interiors.
+              </p>
+            </div>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card">
+              <div class="project-photo">
+                Add living room before/after photo here
+              </div>
+              <div class="project-body">
+                <div class="project-title" data-text data-en="Full interior repaint & baseboards"
+                  data-es="Pintura interior completa y zócalos nuevos">
+                  Full interior repaint &amp; baseboards
+                </div>
+                <div class="project-meta" data-text
+                  data-en="Walls, ceilings, trim, new 5&quot; baseboards, patched holes, and stairway ceiling repair."
+                  data-es="Paredes, techos, molduras, nuevos zócalos de 5&quot;, hoyos parchados y reparación de techo en escaleras.">
+                  Walls, ceilings, trim, new 5" baseboards, patched holes, and stairway ceiling repair.
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-photo">
+                Add flooring & stairs photo here
+              </div>
+              <div class="project-body">
+                <div class="project-title" data-text data-en="Waterproof vinyl flooring & stairs"
+                  data-es="Piso vinílico impermeable y escaleras">
+                  Waterproof vinyl flooring &amp; stairs
+                </div>
+                <div class="project-meta" data-text
+                  data-en="Old flooring removed, new waterproof vinyl installed downstairs with transitions and stairs."
+                  data-es="Remoción de piso viejo, instalación de vinilo impermeable en planta baja con transiciones y escaleras.">
+                  Old flooring removed, new waterproof vinyl installed downstairs with transitions and stairs.
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-photo">
+                Add bathroom remodel photo here
+              </div>
+              <div class="project-body">
+                <div class="project-title" data-text data-en="Bathroom refresh"
+                  data-es="Remodelación ligera de baño">
+                  Bathroom refresh
+                </div>
+                <div class="project-meta" data-text
+                  data-en="Toilet and valve replacement, patched drywall, new paint, fixtures, and hardware."
+                  data-es="Cambio de inodoro y válvula, reparación de drywall, nueva pintura, accesorios y herrajes.">
+                  Toilet and valve replacement, patched drywall, new paint, fixtures, and hardware.
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="wrapper">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title" data-text data-en="Request your free estimate"
+                data-es="Solicite su estimado gratis">
+                Request your free estimate
+              </h2>
+              <p class="section-sub" data-text
+                data-en="Send us a message with a short description of your project. We’ll reply with next steps and a time window for your estimate."
+                data-es="Envíenos un mensaje con una breve descripción de su proyecto. Responderemos con los siguientes pasos y un horario para su estimado.">
+                Send us a message with a short description of your project. We’ll reply with next steps and a time
+                window for your estimate.
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-grid">
+            <div class="card">
+              <form>
+                <div class="form-row">
+                  <div class="field">
+                    <label for="name" data-text data-en="Name" data-es="Nombre">Name</label>
+                    <input id="name" type="text" placeholder="Full name" />
+                  </div>
+                  <div class="field">
+                    <label for="phone" data-text data-en="Phone number" data-es="Número de teléfono">Phone
+                      number</label>
+                    <input id="phone" type="tel" placeholder="(943) 268-5209" />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" placeholder="you@example.com" />
+                  </div>
+                  <div class="field">
+                    <label for="city" data-text data-en="City / Area" data-es="Ciudad / Área">City / Area</label>
+                    <input id="city" type="text" placeholder="Lilburn, Lawrenceville, Snellville..." />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="service" data-text data-en="Type of project" data-es="Tipo de proyecto">Type of
+                    project</label>
+                  <select id="service">
+                    <option value="" disabled selected>Select one</option>
+                    <option>Interior painting</option>
+                    <option>Flooring & stairs</option>
+                    <option>Bathroom remodel</option>
+                    <option>Kitchen update</option>
+                    <option>Repairs / punch list</option>
+                    <option>Other (describe below)</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="message" data-text data-en="Project details"
+                    data-es="Detalles del proyecto">Project details</label>
+                  <textarea id="message"
+                    placeholder="Example: Paint whole interior, replace downstairs carpet with waterproof vinyl, repair stairway ceiling..."></textarea>
+                </div>
+
+                <div class="field">
+                  <label for="budget" data-text data-en="Approximate budget (optional)"
+                    data-es="Presupuesto aproximado (opcional)">Approximate budget (optional)</label>
+                  <input id="budget" type="text" placeholder="$" />
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="margin-top: 0.4rem" data-text
+                  data-en="Submit request" data-es="Enviar solicitud">
+                  Submit request
+                </button>
+                <p class="form-note" data-text
+                  data-en="This form does not book a date automatically. We will contact you to confirm your appointment."
+                  data-es="Este formulario no reserva una fecha automáticamente. Nos comunicaremos con usted para confirmar su cita.">
+                  This form does not book a date automatically. We will contact you to confirm your appointment.
+                </p>
+              </form>
+            </div>
+
+            <div class="card">
+              <div class="contact-info">
+                <div class="contact-item">
+                  <div class="contact-icon">📞</div>
+                  <div>
+                    <strong data-text data-en="Call or text"
+                      data-es="Llamar o enviar mensaje">Call or text</strong><br />
+                    <!-- Updated phone here -->
+                    <a href="tel:19432685209">(943) 268-5209</a>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <div class="contact-icon">📧</div>
+                  <div>
+                    <strong>Email</strong><br />
+                    <!-- Updated email here -->
+                    <a href="mailto:airremodelingandconstruction@gmail.com">airremodelingandconstruction@gmail.com</a>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <div class="contact-icon">📍</div>
+                  <div>
+                    <strong data-text data-en="Service area" data-es="Área de servicio">Service area</strong><br />
+                    <span data-text
+                      data-en="Based in Lilburn, GA • Serving Gwinnett County and nearby cities"
+                      data-es="Ubicados en Lilburn, GA • Servicio en el condado de Gwinnett y ciudades cercanas">
+                      Based in Lilburn, GA • Serving Gwinnett County and nearby cities
+                    </span>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <div class="contact-icon">🕒</div>
+                  <div>
+                    <strong data-text data-en="Typical hours" data-es="Horario típico">Typical hours</strong><br />
+                    <span data-text
+                      data-en="Monday–Saturday: 8:00 am – 6:00 pm • Sunday by appointment"
+                      data-es="Lunes a sábado: 8:00 am – 6:00 pm • Domingo con cita">
+                      Monday–Saturday: 8:00 am – 6:00 pm • Sunday by appointment
+                    </span>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <div class="contact-icon">📲</div>
+                  <div>
+                    <strong data-text data-en="Social media" data-es="Redes sociales">Social media</strong><br />
+                    <!-- Updated handle here -->
+                    <span>@airremodelingco (Instagram / Facebook / TikTok)</span>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <div class="contact-icon">✅</div>
+                  <div>
+                    <strong data-text data-en="Fully insured" data-es="Totalmente asegurados">Fully insured</strong><br />
+                    <span data-text
+                      data-en="Ask for proof of insurance and references with your estimate."
+                      data-es="Solicite prueba de seguro y referencias con su estimado.">
+                      Ask for proof of insurance and references with your estimate.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="wrapper">
+        <div class="footer-inner">
+          <div>
+            © <span id="year"></span> AIR Remodeling. <span data-text data-en="All rights reserved."
+              data-es="Todos los derechos reservados.">All rights reserved.</span>
+          </div>
+          <div class="footer-links">
+            <a href="#top" data-text data-en="Back to top" data-es="Volver arriba">Back to top</a>
+            <a href="#contact" data-text data-en="Free estimate" data-es="Estimado gratis">Free estimate</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Language toggle
+    const langButtons = document.querySelectorAll("[data-lang-btn]");
+    const textNodes = document.querySelectorAll("[data-text]");
+
+    function setLanguage(lang) {
+      textNodes.forEach((node) => {
+        const content = node.getAttribute(`data-${lang}`);
+        if (content) node.innerHTML = content;
+      });
+
+      langButtons.forEach((btn) => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang-btn") === lang);
+      });
+    }
+
+    langButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const lang = btn.getAttribute("data-lang-btn");
+        setLanguage(lang);
+      });
+    });
+
+    // Default to English
+    setLanguage("en");
+  </script>
+</body>
+</html>
